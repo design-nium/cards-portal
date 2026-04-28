@@ -1376,6 +1376,15 @@
     .col-date.declined { color:#e24b4a; }
     .col-amount.declined { color:#e24b4a; }
     .nav-item-locked > svg { display: none; }
+  
+    .unlock-backdrop { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:20000; align-items:center; justify-content:center; }
+    .unlock-backdrop.open { display:flex; }
+    .unlock-modal { background:#fff; border-radius:14px; padding:32px; box-shadow:0 16px 48px rgba(0,0,0,0.2); font-family:inherit; }
+    .unlock-modal-title { font-size:18px; font-weight:700; color:#0f172a; margin-bottom:0; }
+    .unlock-modal-actions { display:flex; gap:10px; justify-content:flex-end; }
+    .unlock-modal-cancel { padding:8px 16px; border-radius:8px; border:1px solid #e2e8f0; background:#fff; font-size:13px; font-weight:500; cursor:pointer; font-family:inherit; }
+    .unlock-modal-confirm { padding:8px 16px; border-radius:8px; border:none; background:#0b0e58; color:#fff; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; }
+    .unlock-modal-confirm:hover { background:#1a2fa0; }
   </style>
 </head>
 <body>
@@ -1614,10 +1623,10 @@
       </div>
 
       <div class="kpi-upsell">
-        <div class="upsell-eyebrow">Unlock with Nium</div>
-        <div class="upsell-title">Add global payments</div>
+        <div class="upsell-eyebrow" style="display:none;">Unlock with Nium</div>
+        <div class="upsell-title">Go Live with Nium Payments</div>
         <div class="upsell-body">Send to 190+ countries, hold 35+ currencies, and reconcile in one place — without changing your card programme.</div>
-        <button class="upsell-cta">Set up an account →</button>
+        <button class="upsell-cta">Go live →</button>
       </div>
 
     </div>
@@ -2493,5 +2502,41 @@
       });
     });
   })();
+</script>
+<div class="unlock-backdrop" id="unlockBackdrop">
+  <div class="unlock-modal" style="width:480px;">
+    <div class="unlock-modal-title">Go Live with Nium Payments</div>
+    <div style="display:flex;flex-direction:column;gap:20px;margin:20px 0 28px;">
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#0f172a;margin-bottom:4px;">Global payouts</div>
+        <div style="font-size:13px;color:#64748b;line-height:1.55;">Send payouts to 190+ countries using local currencies and methods.</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#0f172a;margin-bottom:4px;">Multi-currency accounts</div>
+        <div style="font-size:13px;color:#64748b;line-height:1.55;">Open global accounts and fund in local currency.</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#0f172a;margin-bottom:4px;">Global account verification</div>
+        <div style="font-size:13px;color:#64748b;line-height:1.55;">Pre-validate beneficiary account details, instantly.</div>
+      </div>
+    </div>
+    <div class="unlock-modal-actions">
+      <button class="unlock-modal-cancel" id="unlockClose">Close</button>
+      <button class="unlock-modal-confirm">Go live</button>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  var backdrop = document.getElementById('unlockBackdrop');
+  if (!backdrop) return;
+  function openModal(e) { if(e){e.preventDefault();e.stopPropagation();} backdrop.classList.add('open'); }
+  function closeModal() { backdrop.classList.remove('open'); }
+  document.getElementById('unlockClose').addEventListener('click', closeModal);
+  backdrop.addEventListener('click', function(e){ if(e.target===backdrop) closeModal(); });
+  document.querySelectorAll('.upsell-cta').forEach(function(btn) {
+    btn.addEventListener('click', openModal);
+  });
+})();
 </script>
 </body></html>

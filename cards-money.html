@@ -5753,7 +5753,29 @@
     });
   })();
 </script>
-<div class="unlock-backdrop" id="unlockBackdrop"><div class="unlock-modal"><div class="unlock-modal-title">Set up a Nium payments account</div><div class="unlock-modal-body">A member of our team will reach out to walk you through onboarding and get you live with global payouts, collections, and FX — alongside your existing card programme.</div><div class="unlock-modal-actions"><button class="unlock-modal-cancel" id="unlockClose">Maybe later</button><button class="unlock-modal-confirm">Contact sales</button></div></div></div>
+<div class="unlock-backdrop" id="unlockBackdrop">
+  <div class="unlock-modal" style="width:480px;">
+    <div class="unlock-modal-title">Go Live with Nium Payments</div>
+    <div style="display:flex;flex-direction:column;gap:20px;margin:20px 0 28px;">
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#0f172a;margin-bottom:4px;">Global payouts</div>
+        <div style="font-size:13px;color:#64748b;line-height:1.55;">Send payouts to 190+ countries using local currencies and methods.</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#0f172a;margin-bottom:4px;">Multi-currency accounts</div>
+        <div style="font-size:13px;color:#64748b;line-height:1.55;">Open global accounts and fund in local currency.</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#0f172a;margin-bottom:4px;">Global account verification</div>
+        <div style="font-size:13px;color:#64748b;line-height:1.55;">Pre-validate beneficiary account details, instantly.</div>
+      </div>
+    </div>
+    <div class="unlock-modal-actions">
+      <button class="unlock-modal-cancel" id="unlockClose">Close</button>
+      <button class="unlock-modal-confirm">Go live</button>
+    </div>
+  </div>
+</div>
 <script>(function(){var b=document.getElementById('unlockBackdrop');function o(e){if(e){e.preventDefault();e.stopPropagation();}b.classList.add('open');}function c(){b.classList.remove('open');}document.getElementById('unlockClose').addEventListener('click',c);b.addEventListener('click',function(e){if(e.target===b)c();});var btn=document.getElementById('unlockBtn');if(btn)btn.addEventListener('click',o);var ci=document.querySelector('.content-inner');if(ci)ci.querySelectorAll('a[href],button:not(#unlockBtn),.bal-action,.bal-va-view').forEach(function(el){el.addEventListener('click',o);});})();</script>
 </body>
 </html>
