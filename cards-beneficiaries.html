@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NIUM Cards — Card history</title>
+  <title>NIUM Cards — Beneficiaries</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -2364,6 +2364,19 @@
     /* Make the topbar search look clickable */
     .search-input { cursor: pointer; }
   
+    .btn-more-actions { display:flex; align-items:center; gap:6px; background:var(--color-bg-primary); border:1px solid var(--color-border-secondary); border-radius:var(--radius-sm); padding:8px 14px; font-size:13.5px; font-weight:500; color:var(--color-text-primary); cursor:pointer; font-family:inherit; }
+    .btn-move-funds { display:flex; align-items:center; gap:6px; background:var(--color-brand-navy); color:#fff; border:none; border-radius:var(--radius-sm); padding:8px 16px; font-size:13.5px; font-weight:500; cursor:pointer; font-family:inherit; }
+    .btn-move-funds:hover { background:#1a2fa0; }
+    .role-badge { display:inline-block; padding:2px 9px; border-radius:999px; font-size:11.5px; font-weight:500; }
+    .role-admin   { background:#e6f1fb; color:#0c447c; }
+    .role-manager { background:#eaf3de; color:#27500a; }
+    .role-viewer  { background:#f1f5f9; color:#5f5e5a; }
+    .status-active   { color:#4d9c5e; font-weight:500; }
+    .status-inactive { color:#94a3b8; }
+    .status-invited  { color:#d97706; font-weight:500; }
+    .user-avatar-sm  { width:28px; height:28px; border-radius:50%; background:var(--color-avatar-bg); color:var(--color-avatar-text); font-size:10.5px; font-weight:600; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .user-name-cell  { display:flex; align-items:center; gap:10px; }
+  
     .nav-item-locked > svg { display: none; }
   
     .env-current.env-production {
@@ -2420,7 +2433,7 @@
       <a href="cards-money.html" style="text-decoration:none;color:inherit;"><div class="nav-child">Wallets</div></a>
     </div>
     <a href="cards-beneficiaries.html" class="nav-item-link">
-      <div class="nav-item" data-label="Beneficiaries">
+      <div class="nav-item  active" data-label="Beneficiaries">
         <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg></span>
         <span class="nav-label">Beneficiaries</span>
       </div>
@@ -2500,120 +2513,43 @@
       </div>
     </div>
 
-    <div class="content-inner">
-
+        <div class="content-inner">
       <div class="travel-page-header">
-        <div class="travel-context">
-          <h1 class="travel-title" id="page-h1">Card history</h1>
-        </div>
-        
-      
-
-      
-      </div><!-- /travel-page-header -->
-
-      <p class="subtitle">The result set contains data which was last updated at 16 Mar 2026 21:52 GMT.</p>
-      <div class="page-content-pad">
-        <div class="filter-bar" style="margin-bottom:20px;">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
-            <span class="toolbar-label">Show:</span>
-            <select class="dt-show-select"><option>25</option><option>50</option></select>
-            <div class="data-table-search" style="margin-left:auto;">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              Search
-            </div>
-          </div>
-          <div style="font-size:12.5px;color:var(--color-text-secondary);margin:12px 0 10px;">Filter by:</div>
-          <div class="filter-row" style="margin-bottom:10px;">
-            <div class="filter-field"><label>Transaction Date:</label> From: <input type="text" class="filter-input" value="16/03/2026" style="width:110px;"> To: <input type="text" class="filter-input" style="width:110px;"></div>
-            <div class="filter-field"><label>Transaction Type:</label> <select class="filter-select"><option>Any</option></select></div>
-          </div>
-          <div class="filter-row" style="margin-bottom:10px;">
-            <div class="filter-field"><label>Transaction Reference:</label> <input type="text" class="filter-input" style="width:240px;"></div>
-            <div class="filter-field"><label>Transaction Currency:</label> <select class="filter-select"><option>Any</option></select></div>
-          </div>
-          <div class="filter-row">
-            <div class="filter-field"><label>Adjusted Amount:</label> From: <input type="text" class="filter-input" style="width:100px;"> To: <input type="text" class="filter-input" style="width:100px;"></div>
-            <div class="filter-field"><label>Card Currency:</label> <select class="filter-select"><option>Any</option></select></div>
-            <div class="filter-actions"><a class="filter-link">Apply Filters</a><a class="filter-link" style="color:var(--color-text-secondary);">Reset Filters</a></div>
-          </div>
-        </div>
+        <h1 class="travel-title" id="page-h1">Beneficiaries</h1>
+        <button class="btn-move-funds">+ Add beneficiary</button>
+      </div>
+      <div style="margin-top:4px;">
         <div class="data-table-wrap">
           <table class="data-table">
-            <thead>
-              <tr>
-                <th style="width:auto">DATE</th>
-                <th>CARD REFERENCE</th>
-                <th>TRANSACTION TYPE / TRANSACTION REF</th>
-                <th>PARTICIPANT AMOUNT</th>
-                <th>ADJUSTED AMOUNT</th>
-                <th>BALANCE</th>
-                <th>REVERSAL</th>
-                <th>STATUS</th>
-                <th>TRANSACTION AMOUNT</th>
-                <th></th>
-              </tr>
-            </thead>
+            <thead><tr>
+              <th>Name</th>
+              <th>Account number</th>
+              <th>Bank</th>
+              <th>Currency</th>
+              <th>Country</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr></thead>
             <tbody>
               <tr>
-                <td class="dt-muted" style="white-space:nowrap">01/10/2021 03:00 PM</td>
-                <td><a class="dt-link">OBABSFNxotQnUGmv8XVyyLMZN</a></td>
-                <td><strong>Card created</strong><br><span class="dt-muted">CardReference=CardMtsf6n0...</span></td>
-                <td>USD 1000.00</td>
-                <td><strong>USD 1000.00</strong><br><span class="dt-muted" style="font-size:11.5px">Incl. USD 0.00 Non-Forex Fee<br>Incl. USD 0.00 Forex Fee</span></td>
-                <td>USD 1000.00</td><td>No</td>
-                <td class="dt-status-completed">Completed</td>
-                <td>USD 1000.00</td><td><button class="dt-kebab">⋮</button></td>
-              </tr>
-              <tr>
-                <td class="dt-muted" style="white-space:nowrap">04/10/2021 10:01 AM</td>
-                <td><a class="dt-link">OBAAm JbL QHImYrVVKxnU36T18</a></td>
-                <td><strong>Card created</strong><br><span class="dt-muted">DeveloperReference2=GkRk4wNyOot</span></td>
-                <td>USD 0.00</td>
-                <td><strong>USD 0.00</strong><br><span class="dt-muted" style="font-size:11.5px">Incl. USD 0.00<br>Non-Forex Fee<br>Incl. USD 0.00<br>Forex Fee</span></td>
-                <td>USD 0.00</td><td>No</td>
-                <td class="dt-status-completed">Completed</td>
-                <td>USD 0.00</td><td><button class="dt-kebab">⋮</button></td>
-              </tr>
-              <tr>
-                <td class="dt-muted" style="white-space:nowrap">04/10/2021 10:01 AM</td>
-                <td><a class="dt-link">OBABySNxotQnOmv8XVyyLMPN</a></td>
-                <td><strong>Transfer</strong><br><span class="dt-muted">MPAOTN4QeNGSDa5G00onekG2</span></td>
-                <td>USD 17.00</td>
-                <td><strong>USD 17.00</strong><br><span class="dt-muted" style="font-size:11.5px">Incl. USD 0.00<br>Non-Forex Fee<br>Incl. USD 0.00<br>Forex Fee</span></td>
-                <td>USD 1017.00</td><td>No</td>
-                <td class="dt-status-completed">Completed</td>
-                <td>USD 17.00</td><td><button class="dt-kebab">⋮</button></td>
-              </tr>
-              <tr>
-                <td class="dt-muted" style="white-space:nowrap">04/10/2021 10:10 AM</td>
-                <td><a class="dt-link">OBABySNxotQnOmv8XVyyLMZN</a></td>
-                <td><strong>Freeze</strong><br><span class="dt-muted">FeatureName=aten_vgatPH0e7N25</span></td>
-                <td>USD 0.00</td>
-                <td><strong>USD 0.00</strong><br><span class="dt-muted" style="font-size:11.5px">Incl. USD 0.00<br>Non-Forex Fee<br>Incl. USD 0.00<br>Forex Fee</span></td>
-                <td>USD 1017.00</td><td>No</td>
-                <td class="dt-status-completed">Completed</td>
-                <td>USD 0.00</td><td><button class="dt-kebab">⋮</button></td>
-              </tr>
-              <tr>
-                <td class="dt-muted" style="white-space:nowrap">11/10/2021 06:41 AM</td>
-                <td><a class="dt-link">OBAChyJd4wS24r916wITKIoXB</a></td>
-                <td><strong>Card created</strong><br><span class="dt-muted">OBACHYJA4wS24r916wDchn5Nxe</span></td>
-                <td>USD 11.00</td>
-                <td><strong>USD 11.00</strong><br><span class="dt-muted" style="font-size:11.5px">Incl. USD 0.00<br>Non-Forex Fee<br>Incl. USD 0.00<br>Forex Fee</span></td>
-                <td>USD 11.00</td><td>No</td>
-                <td class="dt-status-completed">Completed</td>
-                <td>USD 11.00</td><td><button class="dt-kebab">⋮</button></td>
+                <td colspan="7" style="text-align:center;padding:64px 24px;border:none;">
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-tertiary)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                      <circle cx="9" cy="7" r="4"/>
+                      <polyline points="16 11 18 13 22 9"/>
+                    </svg>
+                    <div style="font-size:15px;font-weight:500;color:var(--color-text-primary);">No beneficiaries yet</div>
+                    <div style="font-size:13px;color:var(--color-text-secondary);max-width:320px;line-height:1.5;">Add a beneficiary to start sending payments. Beneficiary details are validated before saving.</div>
+                    <button class="btn-move-funds" style="margin-top:4px;">+ Add beneficiary</button>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>
-          <div class="dt-footer">
-            <span>Page 1 of 4: <a>&lt;&lt; First</a> | <a>&lt; Prev</a> | <a>Next &gt;</a> | <a>Last &gt;&gt;</a></span>
-            <a class="dt-download">Download to CSV ⓘ</a>
-          </div>
         </div>
       </div>
-      </div><!-- /content-inner -->
+    </div><!-- /content-inner -->
 
   </div>
 </div>
@@ -3331,6 +3267,9 @@
       if (e.target === backdrop) backdrop.classList.remove('open');
     });
   })();
+</script>
+<script>
+(function(){var a=document.getElementById('usersSelectAll');if(a)a.addEventListener('change',function(){document.querySelectorAll('#usersTable tbody .dt-checkbox').forEach(function(c){c.checked=a.checked;});});})();
 </script>
 <script>
   // Colour-code env button
